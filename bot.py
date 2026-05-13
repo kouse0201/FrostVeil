@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 import json
 import os
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 from flask import Flask
 from threading import Thread
 
@@ -143,7 +143,9 @@ inventory_panel_channel_id = None
 # =========================================================
 def get_now_time():
 
-    return datetime.now().strftime("%H:%M")
+    jst = timezone(timedelta(hours=9))
+
+    return datetime.now(jst).strftime("%H:%M")
 
 
 # =========================================================
